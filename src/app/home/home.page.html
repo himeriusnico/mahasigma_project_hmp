@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title style="padding-left: 680px;"> E-Sports </ion-title>
+    <ion-title style="padding-left: 680px">E-Sports</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    <ion-buttons shape="round" style="margin-left: 1300px;">
+    </ion-buttons>
+    <ion-buttons shape="round" style="margin-left: 1300px">
       <ion-icon slot="icon-only" name="people-circle-outline"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -17,20 +17,32 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <!-- <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
-    <ion-icon name="game-controller-outline"> </ion-icon>
-    <hr />
-    <a routerLink="/home/wwp">What We Play</a>
-    <hr />
-    <ion-icon name="people-outline"></ion-icon>
-    <hr />
-    <a routerLink="/home/wwa">Who We Are</a>
-    <hr />
-    <ion-icon name="calendar-number-outline"></ion-icon>
-    <hr />
-    <a routerLink="/home/schedule">Schedule Page</a>
-    <hr />
+  <div id="container" style="text-align: center">
+    <!-- What We Play -->
+    <div style="padding: 20px" (click)="goToPage('wwp')">
+      <ion-icon
+        name="game-controller-outline"
+        style="font-size: 60px"
+      ></ion-icon>
+      <br />
+      <a routerLink="/home/wwp" style="font-size: 24px">What We Play</a>
+    </div>
+
+    <!-- Who We Are -->
+    <div style="padding: 20px" (click)="goToPage('wwa')">
+      <ion-icon name="people-outline" style="font-size: 60px"></ion-icon>
+      <br />
+      <a routerLink="/home/wwa" style="font-size: 24px">Who We Are</a>
+    </div>
+
+    <!-- Schedule -->
+    <div style="padding: 20px" (click)="goToPage('schedule')">
+      <ion-icon
+        name="calendar-number-outline"
+        style="font-size: 60px"
+      ></ion-icon>
+      <br />
+      <a routerLink="/home/schedule" style="font-size: 24px">Schedule Page</a>
+    </div>
   </div>
 </ion-content>

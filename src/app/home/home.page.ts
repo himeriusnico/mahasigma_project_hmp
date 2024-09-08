@@ -10,7 +10,6 @@ export class HomePage {
 
   constructor(private router: Router) {}
 
-  // Method to navigate to different pages based on the input
   goToPage(page: string) {
     this.router.navigate([`/home/${page}`]);
   }

@@ -17,4 +17,5 @@ import { WwaPage } from './wwa.page';
   ],
   declarations: [WwaPage]
 })
-export class WwaPageModule {}
+export class WwaPageModule {
+}

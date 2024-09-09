@@ -16,20 +16,44 @@
 </ion-content> -->
 
 <ion-content [fullscreen]="true">
+  <!-- Image -->
+   <ion-list lines="full">
     <ion-img
-    src="https://docs-demo.ionic.io/assets/madison.jpg"
-    alt="The Wisconsin State Capitol building in Madison, WI at night"
-  ></ion-img>
+    style="width:100%;"
+    src="https://picsum.photos/2000/400"
+    ></ion-img>
+   </ion-list>
+    
 
-  <ion-text color="primary">
-    <h1>
-      lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque harum facere, hic tempora 
-      consectetur commodi architecto obcaecati sed deleniti ullam 
-      rem amet autem quos officia? Assumenda consectetur dicta soluta impedit.
-    </h1>
-  </ion-text>
+  <!-- Title & Description Text -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Who We Are</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Titan Strike is a competitive e-sports team known for their telentless drive
+        and tactical prowess across multiple gaming titles, especially in Valorant and
+        League of Legends.
+        <br>
+        With a roster of skilled players and a reputation for teamwork
+        and strategic excellence.
+        <br>
+        Titan Strike has earned top placements in regional
+        and international tournaments. Their commitment to innovation and growth continues
+        to make them a formidable force in the e-sports arena.
+      </ion-card-content>
+    </ion-card>
 
+   <!-- Like Button -->
+   <ion-list lines="full">
+    <ion-button 
+    fill="outline"
+    shape="round"
+    color="medium"
+    style="padding-left: 90%;"
+    (click)="likeCount()">
+      <ion-text>{{numberOfLikeClicked}}</ion-text> 
+      <ion-icon name="thumbs-up-outline"></ion-icon>
+    </ion-button>
+   </ion-list>
 </ion-content>
-
-
-

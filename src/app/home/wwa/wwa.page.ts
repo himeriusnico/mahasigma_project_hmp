@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wwa.page.scss'],
 })
 export class WwaPage implements OnInit {
-
+  numberOfLikeClicked:number=0;
   constructor() { }
+
+  likeCount() {
+    this.numberOfLikeClicked++;
+  }
 
   ngOnInit() {
   }

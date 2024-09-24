@@ -24,32 +24,22 @@
 </ion-content> -->
 
 <ion-content [fullscreen]="true">
+
   <!-- Image -->
-   <ion-list lines="full">
+   <ion-list lines="full" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
     <ion-img
-    style="width:100%;"
-    src="https://picsum.photos/2000/400"
+    style="width:70%;height: auto;"
+    src="assets/img/Sentinel.jpg"
     ></ion-img>
    </ion-list>
     
 
   <!-- Title & Description Text -->
-    <ion-card>
+    <ion-card *ngFor="let desc of arrDesc">
       <ion-card-header>
-        <ion-card-title>Who We Are</ion-card-title>
+        <ion-card-title>{{desc.namaTeam}}</ion-card-title>
       </ion-card-header>
-      <ion-card-content>
-        Titan Strike is a competitive e-sports team known for their telentless drive
-        and tactical prowess across multiple gaming titles, especially in Valorant and
-        League of Legends.
-        <br>
-        With a roster of skilled players and a reputation for teamwork
-        and strategic excellence.
-        <br>
-        Titan Strike has earned top placements in regional
-        and international tournaments. Their commitment to innovation and growth continues
-        to make them a formidable force in the e-sports arena.
-      </ion-card-content>
+      <ion-card-content>{{desc.deskripsiTeam}}</ion-card-content>
     </ion-card>
 
    <!-- Like Button -->
@@ -64,4 +54,5 @@
       <ion-icon name="thumbs-up-outline"></ion-icon>
     </ion-button>
    </ion-list>
+   
 </ion-content>

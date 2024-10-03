@@ -24,10 +24,13 @@ export class SchedulePage implements OnInit {
       team: "Team A",
       gambarEvent: "",
       lokasiEvent: "Los Angeles, CA",
-      deskripsiEvent: "This high-stakes event will bring together top team from accross the region, all competing for a chance to advance to the national finals. Expect intense gameplay, strategic plays, and thrilling moments as teams battle it out in one of the most popular first-person shooters. Fans can anticipate an action-packed day filled with memorable highlights and fierce competition in the heart of the esports scene.",
+      deskripsiEvent: "This high-stakes event will bring together top team from accross the region, all competing for a chance" +
+        " to advance to the national finals. Expect intense gameplay, strategic plays, and thrilling moments as teams battle it out" +
+        " in one of the most popular first-person shooters. Fans can anticipate an action-packed day filled with memorable highlights" +
+        " and fierce competition in the heart of the esports scene.",
     },
     {
-      tanggalEvent: new Date(2024, 8, 10),
+      tanggalEvent: new Date(2024, 8, 10, 23),
       namaEvent: "League of Legends Workshop",
       namaGame: "LOL",
       team: "Team C",
@@ -36,7 +39,7 @@ export class SchedulePage implements OnInit {
       deskripsiEvent: "",
     },
     {
-      tanggalEvent: new Date(2024, 9, 7),
+      tanggalEvent: new Date(2024, 9, 7, 11),
       namaEvent: "Call of Duty Championship",
       namaGame: "COD",
       team: "Team A",
@@ -78,5 +81,4 @@ export class SchedulePage implements OnInit {
 
   ngOnInit() {
   }
-
 }

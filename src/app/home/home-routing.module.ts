@@ -9,20 +9,20 @@ const routes: Routes = [
   },
   {
     path: 'wwp',
-    loadChildren: () => import('./wwp/wwp.module').then( m => m.WwpPageModule)
+    loadChildren: () => import('./wwp/wwp.module').then(m => m.WwpPageModule)
   },
   {
     path: 'wwa',
-    loadChildren: () => import('./wwa/wwa.module').then( m => m.WwaPageModule)
+    loadChildren: () => import('./wwa/wwa.module').then(m => m.WwaPageModule)
   },
   {
     path: 'schedule',
-    loadChildren: () => import('./schedule/schedule.module').then( m => m.SchedulePageModule)
-  }
+    loadChildren: () => import('./schedule/schedule.module').then(m => m.SchedulePageModule)
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomePageRoutingModule {}
+export class HomePageRoutingModule { }

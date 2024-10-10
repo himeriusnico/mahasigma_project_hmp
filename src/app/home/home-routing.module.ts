@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./wwp/wwp.module').then( m => m.WwpPageModule)
   },
   {
-    path: 'wwa',  
+    path: 'wwa',
     loadChildren: () => import('./wwa/wwa.module').then( m => m.WwaPageModule)
   },
   {
@@ -20,6 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./schedule/schedule.module').then( m => m.SchedulePageModule)
   },
   {
+    path: 'achievement',
+    loadChildren: () => import('./achievement/achievement.module').then( m => m.AchievementPageModule)
   }
 
 ];

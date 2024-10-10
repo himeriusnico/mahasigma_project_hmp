@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Schedule Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-icon slot="icon-only" name="people-circle-outline" style="font-size: 24px"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card>
+      <ion-img src="assets/img/Sentinel.jpg"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{arrEvent[index].namaEvent}}</ion-card-title>
+        <ion-card-subtitle>
+          {{arrEvent[index].lokasiEvent}} ({{getTimePad(arrEvent[index])}})
+        </ion-card-subtitle>
+        <ion-card-subtitle>
+          {{arrEvent[index].team}}
+        </ion-card-subtitle><br>
+      </ion-card-header>
+      <ion-card-content>
+        {{arrEvent[index].deskripsiEvent}}
+        <div class="button">
+          <ion-button id="btn" shape="round" fill="outline" class="ion-float-right ion-margin-bottom ion-margin-top" (click)="tes()">
+            <ion-icon slot="start" name="notifications-outline"></ion-icon>Notify Me
+          </ion-button>
+          <ion-alert trigger="btn" header="Add Pasta" message="Data Succesfully stored"
+            [buttons]="alertButtons"></ion-alert>
+          <ion-toast trigger="btn" message="This toast will disappear after 5 seconds" [duration]="5000"></ion-toast>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

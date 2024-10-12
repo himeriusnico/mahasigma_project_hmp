@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teams',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teams.page.scss'],
 })
 export class TeamsPage implements OnInit {
-  
-  constructor() { }
+  selectedGame: any;
 
-  ngOnInit() {
+  constructor(private router: Router) {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state) {
+      this.selectedGame = navigation.extras.state['selectedGame'];
+    }
   }
 
+  ngOnInit() {
+    if (!this.selectedGame) {
+    }
+  }
 }

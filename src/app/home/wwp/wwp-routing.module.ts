@@ -7,8 +7,9 @@ const routes: Routes = [
   {
     path: '',
     component: WwpPage
-  },  {
-    path: 'teams',
+  },
+  {
+    path: 'teams/:id',
     loadChildren: () => import('./teams/teams.module').then( m => m.TeamsPageModule)
   }
 

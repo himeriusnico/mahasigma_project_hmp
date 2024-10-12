@@ -1,13 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>teams</ion-title>
+    <ion-title>{{ selectedGame?.name }} teams</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">teams</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content *ngIf="selectedGame">
+  <div class="image-container">
+    <img
+      [src]="selectedGame.image"
+      [alt]="selectedGame.alt"
+      class="center-crop-image"
+    />
+  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ selectedGame.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content> </ion-card-content>
+  </ion-card>
 </ion-content>

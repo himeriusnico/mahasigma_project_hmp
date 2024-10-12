@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'achievement/:id',
     loadChildren: () => import('./home/achievement/achievement.module').then( m => m.AchievementPageModule)
   },
+  {
+    path: 'home/wwp/teams/:gameId',
+    loadChildren: () => import('./home/wwp/teams/teams.module').then(m => m.TeamsPageModule)
+  }
 ];
 
 @NgModule({

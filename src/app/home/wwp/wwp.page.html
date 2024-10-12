@@ -27,11 +27,8 @@
         >
       </ion-col>
       <ion-col size="auto">
-        <ion-button
-          shape="round"
-          fill="outline"
-          [routerLink]="['/teams', game.id]"
-          >Teams</ion-button
+        <ion-button shape="round" fill="outline" (click)="goToTeams(game)"
+          >teams</ion-button
         >
       </ion-col>
     </ion-row>

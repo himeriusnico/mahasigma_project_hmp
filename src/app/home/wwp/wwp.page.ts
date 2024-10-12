@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wwp',
@@ -23,7 +24,13 @@ export class WwpPage implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private router: Router) {}
+
+  goToTeams(game: any) {
+    this.router.navigate(['/home/wwp/teams', game.id], {
+      state: { selectedGame: game }
+    });
+  }
 
   ngOnInit() {
   }

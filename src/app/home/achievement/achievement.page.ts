@@ -64,8 +64,9 @@ export class AchievementPage implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+
       const gameId = +params['id'];  // Get the game ID from the route
-      this.selectedGame = this.games.find(game => game.id === gameId);  // Find the selected game by ID
+      this.selectedGame = this.games.find(game => game.id === gameId);
       type Achievement = { year:number};
 
       if(this.selectedGame && Array.isArray(this.selectedGame.achievements)){
@@ -83,7 +84,7 @@ export class AchievementPage implements OnInit {
   filterAchievements() {
     type Achievement = { year:number};
     if (this.selectedYear === 0) {
-      this.filteredAchievements = this.selectedGame.achievements;  // Show all achievements
+      this.filteredAchievements = this.selectedGame.achievements; 
     } else {
       this.filteredAchievements = this.selectedGame.achievements.filter((a: Achievement) => a.year === this.selectedYear);
     }

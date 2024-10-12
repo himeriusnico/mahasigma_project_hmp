@@ -19,10 +19,20 @@
     <ion-card-content> {{ game.description }} </ion-card-content>
     <ion-row justify-content-end>
       <ion-col size="auto">
-        <ion-button shape="round" fill="outline" [routerLink]="['/achievement', game.id]">Achievement</ion-button>
+        <ion-button
+          shape="round"
+          fill="outline"
+          [routerLink]="['/achievement', game.id]"
+          >Achievement</ion-button
+        >
       </ion-col>
       <ion-col size="auto">
-        <ion-button shape="round" fill="outline">Teams</ion-button>
+        <ion-button
+          shape="round"
+          fill="outline"
+          [routerLink]="['/teams', game.id]"
+          >Teams</ion-button
+        >
       </ion-col>
     </ion-row>
   </ion-card>

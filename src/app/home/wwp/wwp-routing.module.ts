@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: WwpPage
+  },  {
+    path: 'teams',
+    loadChildren: () => import('./teams/teams.module').then( m => m.TeamsPageModule)
   }
+
 ];
 
 @NgModule({

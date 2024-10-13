@@ -24,10 +24,13 @@
       <ion-label>Daftar Tim</ion-label>
     </ion-list-header>
     <ion-item
-      *ngFor="let team of selectedGame.teams"
+      *ngFor="let team of valorantTeams"
       (click)="showTeamDetails(team)"
+      button
     >
-      <ion-label>{{ team.name }}</ion-label>
+      <ion-label>
+        <h2>{{ team.teamName }}</h2>
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

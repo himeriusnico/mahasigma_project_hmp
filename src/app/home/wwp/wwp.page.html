@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let game of games">
+  <ion-card *ngFor="let game of games, let i=index">
     <img [src]="game.image" [alt]="game.alt" />
     <ion-card-header>
       <ion-card-title>{{ game.name }}</ion-card-title>
@@ -22,7 +22,7 @@
         <ion-button
           shape="round"
           fill="outline"
-          [routerLink]="['/achievement', game.id]"
+          [routerLink]="['/achievement', i]"
           >Achievement</ion-button
         >
       </ion-col>

@@ -43,15 +43,4 @@ export class ScheduledetailPage implements OnInit {
   }
 
   public alertButtons = ['OK'];
-
-  async tes(){
-    const alert = await this.alertController.create({
-      header: 'A Short Title Is Best',
-      subHeader: 'A Sub Header Is Optional',
-      message: 'A message should be a short, complete sentence.',
-      buttons: ['Action'],
-    });
-
-    await alert.present();
-  }
 }

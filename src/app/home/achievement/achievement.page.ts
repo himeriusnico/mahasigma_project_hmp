@@ -56,6 +56,7 @@ export class AchievementPage implements OnInit {
   selectedYear: number=0;
   availableYears: number[]=[];
   filteredAchievements: any[]=[];
+  id: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -64,15 +65,15 @@ export class AchievementPage implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-
-      const gameId = +params['id'];  // Get the game ID from the route
-      this.selectedGame = this.games.find(game => game.id === gameId);
+      this.id=params['id']; // Get the game index from the route
+      this.selectedGame = this.games[this.id]
       type Achievement = { year:number};
 
-      if(this.selectedGame && Array.isArray(this.selectedGame.achievements)){
-        this.availableYears = [...new Set(this.selectedGame.achievements
+      if(this.selectedGame){
+        this.availableYears = [...new Set(this.selectedGame.achievement
           .map((a: Achievement) => a?.year)
-          .filter((year:Number) => typeof year=='number') as number[])];
+          .filter((year:Number) => typeof year=='number') as number[])]
+          .sort((a, b) => a - b);
         this.availableYears.unshift(0);  // Add "All" option
         this.filterAchievements();
       }else{
@@ -84,9 +85,9 @@ export class AchievementPage implements OnInit {
   filterAchievements() {
     type Achievement = { year:number};
     if (this.selectedYear === 0) {
-      this.filteredAchievements = this.selectedGame.achievements; 
+      this.filteredAchievements = this.selectedGame.achievement; 
     } else {
-      this.filteredAchievements = this.selectedGame.achievements.filter((a: Achievement) => a.year === this.selectedYear);
+      this.filteredAchievements = this.selectedGame.achievement.filter((a: Achievement) => a.year === this.selectedYear);
     }
   }
 

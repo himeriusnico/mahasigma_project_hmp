@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { SchedulePage } from '../schedule.page';
-
-import { AlertController } from '@ionic/angular';
+import { EventserviceService } from 'src/app/eventservice.service';
 
 interface Schedule {
   tanggalEvent: Date,
@@ -21,7 +20,9 @@ interface Schedule {
   styleUrls: ['./scheduledetail.page.scss'],
 })
 export class ScheduledetailPage implements OnInit {
-  constructor(private route: ActivatedRoute, private alertController: AlertController) { }
+  arrEvent: any[] = [];
+
+  constructor(private route: ActivatedRoute, private eventservice: EventserviceService) { }
 
   index = 0;
   ngOnInit() {
@@ -29,10 +30,9 @@ export class ScheduledetailPage implements OnInit {
       this.index = params['index']; // value of 'index' should match the route parameter name
       // You can use the 'index' parameter for your logic here
     });
-  }
 
-  schedule = new SchedulePage();
-  arrEvent = this.schedule.arrEvent;
+    this.arrEvent=this.eventservice.arrEvent //Isi array berdasarkan data yang ada di event service
+  }
 
   getTimePad(schedule: Schedule): String {
     var hours = schedule.tanggalEvent.getHours();

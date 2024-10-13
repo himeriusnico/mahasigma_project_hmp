@@ -16,6 +16,18 @@
     <ion-card-header>
       <ion-card-title>{{ selectedGame.name }}</ion-card-title>
     </ion-card-header>
-    <ion-card-content> </ion-card-content>
+    <ion-card-content> {{ selectedGame.description }} </ion-card-content>
   </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Daftar Tim</ion-label>
+    </ion-list-header>
+    <ion-item
+      *ngFor="let team of selectedGame.teams"
+      (click)="showTeamDetails(team)"
+    >
+      <ion-label>{{ team.name }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

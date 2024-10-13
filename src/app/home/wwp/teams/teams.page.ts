@@ -20,4 +20,9 @@ export class TeamsPage implements OnInit {
     if (!this.selectedGame) {
     }
   }
+
+  showTeamDetails(team: any) {
+    // Implementasi logika untuk menampilkan detail tim
+    console.log('Menampilkan detail tim:', team);
+  }
 }

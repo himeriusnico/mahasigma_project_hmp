@@ -9,15 +9,13 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
-      <ion-label>Year</ion-label>
-      <!-- <ion-select [(ngModel)]="selectedYear" (ionChange)="filterAchievements()"> -->
-        <!-- <ion-select-option *ngFor="let year of availableYears" [value]="year">
+    <!-- <ion-select [(ngModel)]="selectedYear" (ionChange)="filterAchievements()"> 
+        <ion-select-option *ngFor="let year of availableYears" [value]="year">
           {{ year === 0 ? 'All' : year }}
-        </ion-select-option> -->
-    </ion-item>
+        </ion-select-option>
+      </ion-select> -->
     <ion-item>
-      <ion-select label="tes" placeholder="tes">
+      <ion-select [(ngModel)]="selectedYear" label="Year" placeholder="Select Year" labelPlacement="stacked">
         <ion-select-option *ngFor="let game of games" [value]="game" interface="popover">
           {{ game.id }}
         </ion-select-option>
@@ -33,7 +31,7 @@
         <ion-card-title>{{ achievement.title }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Team: {{ achievement.teamName }}</p> <!-- Use 'teamName' if that's the correct field -->
+        <p>Team: {{ achievement.teamName }}</p>
         <p>{{ achievement.description }}</p>
       </ion-card-content>
     </ion-card>

@@ -54,7 +54,7 @@ export class AchievementPage implements OnInit {
 
   selectedGame: any;
   selectedYear: number=0;
-  availableYears: number[]=[];
+  availableYears: number[]=[2024,2023,2022,2021];
   filteredAchievements: any[]=[];
 
   constructor(
@@ -65,7 +65,7 @@ export class AchievementPage implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
 
-      const gameId = +params['id'];  // Get the game ID from the route
+      const gameId = +params['id'];
       this.selectedGame = this.games.find(game => game.id === gameId);
       type Achievement = { year:number};
 
@@ -73,7 +73,7 @@ export class AchievementPage implements OnInit {
         this.availableYears = [...new Set(this.selectedGame.achievements
           .map((a: Achievement) => a?.year)
           .filter((year:Number) => typeof year=='number') as number[])];
-        this.availableYears.unshift(0);  // Add "All" option
+        this.availableYears.unshift(0);
         this.filterAchievements();
       }else{
         console.error('Selected game not found!');

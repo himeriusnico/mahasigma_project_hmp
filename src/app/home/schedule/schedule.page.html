@@ -14,7 +14,7 @@
 <ion-content [fullscreen]="true">
   <ion-list lines="full">
     <div class="container" *ngFor="let event of arrEvent; let i=index">
-      <ion-item routerLink="scheduledetail/{{i}}">
+      <ion-item routerLink="/home/scheduledetail/{{i}}">
         <div class="kiri" style="text-align: center; width: 15%;">
           <label style="font-size: 24px;">
             <b>{{getDatePad(event.tanggalEvent)}}</b>

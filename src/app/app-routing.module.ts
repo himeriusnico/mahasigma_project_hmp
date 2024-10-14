@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'home/wwp/teams/team-details/:gameId/:teamName',
     loadChildren: () => import('./home/wwp/teams/team-details/team-details.module').then(m => m.TeamDetailsPageModule)
-  }
+  },
+  {
+    path: 'home/scheduledetail/:index',
+    loadChildren: () => import('./home/schedule/scheduledetail/scheduledetail.module').then(m => m.ScheduledetailPageModule)
+  },
 ];
 
 @NgModule({

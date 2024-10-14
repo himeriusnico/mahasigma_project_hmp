@@ -5,10 +5,20 @@
   position: relative;
 }
 
-.center-crop-image {
+.center-cropped-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
+
+.clickable-label {
+  cursor: pointer;
+}
+
+ion-item {
+  --ripple-color: var(--ion-color-primary);
+}
+
+
 

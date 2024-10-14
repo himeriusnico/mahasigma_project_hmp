@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/wwp/teams"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ team?.teamName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="image-container" *ngIf="game">
+    <img [src]="game.image" [alt]="game.alt" class="center-cropped-image" />
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="team-name">{{team?.teamName}}</ion-card-title>
+      <div class="divider"></div>
+    </ion-card-header>
+    <ion-card-content>
+      <h3>Players:</h3>
+      <ion-list>
+        <ion-item *ngFor="let player of team?.teamPlayers">
+          <ion-avatar slot="start">
+            <img
+              [src]="'https://i.pravatar.cc/150?u=' + player.name"
+              alt="{{player.name}}"
+            />
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ player.name }}</h2>
+            <p>Role: {{ player.role }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

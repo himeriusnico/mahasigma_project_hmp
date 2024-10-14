@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'home/wwp/teams/:gameId',
     loadChildren: () => import('./home/wwp/teams/teams.module').then(m => m.TeamsPageModule)
+  },
+  {
+    path: 'home/wwp/teams/team-details/:gameId/:teamName',
+    loadChildren: () => import('./home/wwp/teams/team-details/team-details.module').then(m => m.TeamDetailsPageModule)
   }
 ];
 

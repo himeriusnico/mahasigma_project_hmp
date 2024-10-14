@@ -12,20 +12,19 @@
     <img [src]="game.image" [alt]="game.alt" class="center-cropped-image" />
   </div>
 
-  <ion-card>
+  <ion-card *ngIf="game && team">
     <ion-card-header>
-      <ion-card-title class="team-name">{{team?.teamName}}</ion-card-title>
-      <div class="divider"></div>
+      <ion-card-title>{{ team.teamName }}</ion-card-title>
+      <!-- <ion-card-subtitle>{{ game.name }}</ion-card-subtitle> -->
     </ion-card-header>
     <ion-card-content>
+      <!-- <h2 class="team-name">Team: {{ team.teamName }}</h2> -->
+      <div class="divider"></div>
       <h3>Players:</h3>
       <ion-list>
-        <ion-item *ngFor="let player of team?.teamPlayers">
+        <ion-item *ngFor="let player of team.teamPlayers">
           <ion-avatar slot="start">
-            <img
-              [src]="'https://i.pravatar.cc/150?u=' + player.name"
-              alt="{{player.name}}"
-            />
+            <img [src]="'https://i.pravatar.cc/150?u=' + player.name" alt="{{player.name}}" />
           </ion-avatar>
           <ion-label>
             <h2>{{ player.name }}</h2>

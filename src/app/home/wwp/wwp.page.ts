@@ -21,6 +21,20 @@ export class WwpPage implements OnInit {
       description: 'Mobile Legends is a multiplayer online battle arena (MOBA) developed by Moonton. Players engage in 5v5 battles using a variety of heroes, aiming to destroy the enemy\'s base while defending their own.',
       image: 'assets/img/mobile-legends.jpg',
       alt: 'Mobile Legends',
+    },
+    {
+      id: '3',
+      name: 'Fortnite',
+      description: 'Fortnite is an online battle royale game where 100 players fight to be the last one standing.',
+      image: 'assets/img/fortnite.jpg',
+      alt: 'Fortnite'
+    },
+    {
+      id: '4',
+      name: 'Dota 2',
+      description: 'Dota 2 is a competitive multiplayer online battle arena game developed by Valve.',
+      image: 'assets/img/dota2.jpg',
+      alt: 'Dota 2'
     }
   ];
 

@@ -16,12 +16,6 @@
       [alt]="selectedGame.title" 
       class="center-crop-image">
     </div>
-    
-    <!-- <ion-select [(ngModel)]="selectedYear" (ionChange)="filterAchievements()"> 
-        <ion-select-option *ngFor="let year of availableYears" [value]="year">
-          {{ year === 0 ? 'All' : year }}
-        </ion-select-option>
-      </ion-select> -->
     <ion-item>
       <ion-select [(ngModel)]="selectedYear" (ionChange)="filterAchievements()" label="Year" placeholder="Select Year" labelPlacement="stacked">
         <ion-select-option [value]="'All'" interface="popover">

@@ -37,6 +37,20 @@ export class TeamsService {
       image: 'assets/img/mobile-legends.jpg',
       alt: 'Mobile Legends Logo',
       description: 'Mobile Legends: Bang Bang adalah game MOBA mobile yang dikembangkan oleh Moonton.'
+    },
+    {
+      id: '3',
+      name: 'Fortnite',
+      image: 'assets/img/fortnite.jpg',
+      alt: 'Fortnite Logo',
+      description: 'Fortnite adalah permainan battle royale daring di mana 100 pemain bertarung untuk menjadi yang terakhir bertahan.'
+    },
+    {
+      id: '4',
+      name: 'Dota 2',
+      image: 'assets/img/dota2.jpg',
+      alt: 'Dota 2 Logo',
+      description: 'Dota 2 adalah permainan arena pertarungan multipemain daring yang kompetitif yang dikembangkan oleh Valve.'
     }
   ];
 

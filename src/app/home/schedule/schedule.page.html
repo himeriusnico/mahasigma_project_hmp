@@ -16,9 +16,12 @@
     <div class="container" *ngFor="let event of arrEvent; let i=index">
       <ion-item routerLink="scheduledetail/{{i}}">
         <div class="kiri" style="text-align: center; width: 15%;">
-          <ion-label>
-            <label style="font-size: 24px;"><b>{{getDatePad(event)}}</b></label><br>{{getStringMonth(event)}}
-          </ion-label>
+          <label style="font-size: 24px;">
+            <b>{{getDatePad(event.tanggalEvent)}}</b>
+          </label><br>
+          <label>
+            {{getStringMonth(event.tanggalEvent)}}
+          </label>
         </div>
         <div class="tengah" style="width: 60%;">
           <ion-text>

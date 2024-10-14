@@ -56,6 +56,7 @@ export class AchievementPage implements OnInit {
   selectedYear: number=0;
   availableYears: number[]=[2024,2023,2022,2021];
   filteredAchievements: any[]=[];
+  id: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -69,8 +70,8 @@ export class AchievementPage implements OnInit {
       this.selectedGame = this.games.find(game => game.id === gameId);
       type Achievement = { year:number};
 
-      if(this.selectedGame && Array.isArray(this.selectedGame.achievements)){
-        this.availableYears = [...new Set(this.selectedGame.achievements
+      if(this.selectedGame){
+        this.availableYears = [...new Set(this.selectedGame.achievement
           .map((a: Achievement) => a?.year)
           .filter((year:Number) => typeof year=='number') as number[])];
         this.availableYears.unshift(0);
@@ -84,9 +85,9 @@ export class AchievementPage implements OnInit {
   filterAchievements() {
     type Achievement = { year:number};
     if (this.selectedYear === 0) {
-      this.filteredAchievements = this.selectedGame.achievements; 
+      this.filteredAchievements = this.selectedGame.achievement; 
     } else {
-      this.filteredAchievements = this.selectedGame.achievements.filter((a: Achievement) => a.year === this.selectedYear);
+      this.filteredAchievements = this.selectedGame.achievement.filter((a: Achievement) => a.year === this.selectedYear);
     }
   }
 

@@ -1,5 +1,8 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TeamsService } from '../../teams.service'; // Pastikan path ini benar
 
 @Component({
   selector: 'app-wwp',
@@ -7,38 +10,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./wwp.page.scss'],
 })
 export class WwpPage implements OnInit {
-  games = [
-    {
-      id:1,
-      name: 'Valorant',
-      description: 'Valorant is a tactical first-person shooter from Riot Games that combines precise gunplay with unique character abilities. Players engage in strategic, team-based matches where they must complete objectives and outsmart opponents to win.',
-      image: 'assets/img/valorant.jpg',
-      alt: 'Valorant',
-    },
-    {
-      id:2,
-      name: 'Mobile Legends',
-      description: 'Mobile Legends is a multiplayer online battle arena (MOBA) developed by Moonton. Players engage in 5v5 battles using a variety of heroes, aiming to destroy the enemy\'s base while defending their own.',
-      image: 'assets/img/mobile-legends.jpg',
-      alt: 'Mobile Legends',
-    },
-    {
-      id: '3',
-      name: 'Fortnite',
-      description: 'Fortnite is an online battle royale game where 100 players fight to be the last one standing.',
-      image: 'assets/img/fortnite.jpg',
-      alt: 'Fortnite'
-    },
-    {
-      id: '4',
-      name: 'Dota 2',
-      description: 'Dota 2 is a competitive multiplayer online battle arena game developed by Valve.',
-      image: 'assets/img/dota2.jpg',
-      alt: 'Dota 2'
-    }
-  ];
+  games: any[] = [];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private teamsService: TeamsService
+  ) {}
+
+  ngOnInit() {
+    this.games = this.teamsService.getGames();
+    console.log('Games:', this.games);
+  }
 
   goToTeams(game: any) {
     this.router.navigate(['/home/wwp/teams', game.id], {
@@ -51,8 +33,4 @@ export class WwpPage implements OnInit {
       state: { selectedGame: game }
     });
   }
-
-  ngOnInit() {
-  }
-
 }

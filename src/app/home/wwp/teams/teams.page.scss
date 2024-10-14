@@ -20,5 +20,17 @@ ion-item {
   --ripple-color: var(--ion-color-primary);
 }
 
+ion-list {
+  ion-item {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+
+    ion-label {
+      text-align: center;
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
 
 

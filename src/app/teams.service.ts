@@ -109,6 +109,50 @@ export class TeamsService {
         { name: 'Pak Guru', role: 'Mage' },
         { name: 'Kak Ros', role: 'Marksman' }
       ]
+    },
+    // Fortnite teams
+    {
+      gameId: '3',
+      teamName: 'Fortnite Squad A',
+      teamPlayers: [
+        { name: 'Pak Raden', role: 'Builder' },
+        { name: 'Mbak Yuni', role: 'Sniper' },
+        { name: 'Bang Sapri', role: 'Assault' },
+        { name: 'Dek Tole', role: 'Support' }
+      ]
+    },
+    {
+      gameId: '3',
+      teamName: 'Fortnite Squad B',
+      teamPlayers: [
+        { name: 'Mas Bejo', role: 'Builder' },
+        { name: 'Mbak Siti', role: 'Healer' },
+        { name: 'Kang Asep', role: 'Sniper' },
+        { name: 'Dek Imut', role: 'Assault' }
+      ]
+    },
+    // Dota 2 teams
+    {
+      gameId: '4',
+      teamName: 'Dota Legends',
+      teamPlayers: [
+        { name: 'Pak Lurah', role: 'Carry' },
+        { name: 'Mbah Surip', role: 'Mid' },
+        { name: 'Mas Ganteng', role: 'Offlane' },
+        { name: 'Mpok Ati', role: 'Support' },
+        { name: 'Bang Jali', role: 'Hard Support' }
+      ]
+    },
+    {
+      gameId: '4',
+      teamName: 'Ancient Defenders',
+      teamPlayers: [
+        { name: 'Kang Ujang', role: 'Carry' },
+        { name: 'Neng Eneng', role: 'Mid' },
+        { name: 'Abah Somad', role: 'Offlane' },
+        { name: 'Teh Ipeh', role: 'Support' },
+        { name: 'Aki Mahmud', role: 'Hard Support' }
+      ]
     }
   ];
 
@@ -125,5 +169,9 @@ export class TeamsService {
   // Metode baru untuk mendapatkan tim berdasarkan gameId dan teamName
   getTeamByGameIdAndName(gameId: string, teamName: string): Team | null {
     return this.teams.find(team => team.gameId === gameId && team.teamName === teamName) || null;
+  }
+  
+  getGames(): Game[] {
+    return this.games; // Mengembalikan array games yang sudah didefinisikan
   }
 }

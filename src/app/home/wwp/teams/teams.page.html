@@ -15,23 +15,23 @@
       class="center-cropped-image"
     />
   </div>
-  <ion-card>
+  <!-- <ion-card>
     <ion-card-header>
       <ion-card-title>{{ selectedGame?.name }}</ion-card-title>
     </ion-card-header>
-    <!-- <ion-card-content>{{ selectedGame?.description }}</ion-card-content> -->
-  </ion-card>
+    <ion-card-content>{{ selectedGame?.description }}</ion-card-content>
+  </ion-card> -->
 
   <ion-list>
-    <ion-list-header>
-      <ion-label>Teams</ion-label>
-    </ion-list-header>
+    <!-- <ion-list-header>
+      <h1 class="ion-label">Teams</h1>
+    </ion-list-header> -->
     <ion-item
       *ngFor="let team of teams"
       (click)="goToTeamDetails(team)"
       button
     >
-      <ion-label class="clickable-label">
+      <ion-label class="clickable-label centered-label">
         {{ team.teamName }}
       </ion-label>
     </ion-item>

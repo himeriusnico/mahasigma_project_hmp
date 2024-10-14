@@ -9,30 +9,41 @@
 
 <ion-content>
   <ion-list>
+    <div class="image-container">
+      <img 
+      *ngIf="selectedGame.image" 
+      [src]="selectedGame.image" 
+      [alt]="selectedGame.title" 
+      class="center-crop-image">
+    </div>
+    
     <!-- <ion-select [(ngModel)]="selectedYear" (ionChange)="filterAchievements()"> 
         <ion-select-option *ngFor="let year of availableYears" [value]="year">
           {{ year === 0 ? 'All' : year }}
         </ion-select-option>
       </ion-select> -->
     <ion-item>
-      <ion-select [(ngModel)]="selectedYear" label="Year" placeholder="Select Year" labelPlacement="stacked">
-        <ion-select-option *ngFor="let game of games" [value]="game" interface="popover">
-          {{ game.id }}
+      <ion-select [(ngModel)]="selectedYear" (ionChange)="filterAchievements()" label="Year" placeholder="Select Year" labelPlacement="stacked">
+        <ion-select-option [value]="'All'" interface="popover">
+          All
+        </ion-select-option>
+        <ion-select-option *ngFor="let year of availableYears" [value]="year" interface="popover">
+          {{ year }}
         </ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
 
-  <ion-list>
+  <ion-list *ngIf="filteredAchievements.length > 0">
     <ion-card *ngFor="let achievement of filteredAchievements">
-      <img *ngIf="achievement.image" [src]="achievement.image" [alt]="achievement.title">
       <ion-card-header>
         <ion-card-title>{{ achievement.title }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Team: {{ achievement.teamName }}</p>
+        <p>Team: {{ achievement.team }}</p>
         <p>{{ achievement.description }}</p>
+        <p>Year: {{ achievement.year }}</p>
       </ion-card-content>
     </ion-card>
   </ion-list>

@@ -32,6 +32,12 @@ export class WwpPage implements OnInit {
     });
   }
 
+  goToAchievement(game: any) {
+    this.router.navigate(['/home/wwp/achievement', game.id], {
+      state: { selectedGame: game }
+    });
+  }
+
   ngOnInit() {
   }
 

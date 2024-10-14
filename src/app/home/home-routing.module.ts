@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'achievement',
-    loadChildren: () => import('./achievement/achievement.module').then( m => m.AchievementPageModule)
+    loadChildren: () => import('./wwp/achievement/achievement.module').then( m => m.AchievementPageModule)
   }
 
 ];

@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'achievement/:id',
-    loadChildren: () => import('./home/achievement/achievement.module').then( m => m.AchievementPageModule)
+    loadChildren: () => import('./home/wwp/achievement/achievement.module').then( m => m.AchievementPageModule)
   },
   {
     path: 'home/wwp/teams/:gameId',

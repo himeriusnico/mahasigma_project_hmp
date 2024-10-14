@@ -53,7 +53,7 @@ export class AchievementPage implements OnInit {
   ];
 
   selectedGame: any;
-  selectedYear: number=0;
+  selectedYear: any='All';
   availableYears: number[]=[2024,2023,2022,2021];
   filteredAchievements: any[]=[];
   id: any;
@@ -74,7 +74,6 @@ export class AchievementPage implements OnInit {
         this.availableYears = [...new Set(this.selectedGame.achievement
           .map((a: Achievement) => a?.year)
           .filter((year:Number) => typeof year=='number') as number[])];
-        this.availableYears.unshift(0);
         this.filterAchievements();
       }else{
         console.error('Selected game not found!');
@@ -84,7 +83,7 @@ export class AchievementPage implements OnInit {
 
   filterAchievements() {
     type Achievement = { year:number};
-    if (this.selectedYear === 0) {
+    if (this.selectedYear === 'All') {
       this.filteredAchievements = this.selectedGame.achievement; 
     } else {
       this.filteredAchievements = this.selectedGame.achievement.filter((a: Achievement) => a.year === this.selectedYear);

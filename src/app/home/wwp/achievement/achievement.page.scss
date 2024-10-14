@@ -1,0 +1,12 @@
+.center-crop-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.image-container {
+    width: 100%;
+    height: 200px; // Anda bisa menyesuaikan tinggi ini sesuai kebutuhan
+    overflow: hidden;
+    position: relative;
+}

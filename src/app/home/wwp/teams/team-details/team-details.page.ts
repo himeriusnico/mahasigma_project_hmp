@@ -27,11 +27,9 @@ export class TeamDetailsPage implements OnInit {
         this.team = this.teamsService.getTeamByGameIdAndName(gameId, teamName);
         
         if (!this.game || !this.team) {
-          // Jika data tidak ditemukan, kembali ke halaman teams
           this.router.navigate(['/home/wwp/teams']);
         }
       } else {
-        // Jika parameter tidak lengkap, kembali ke halaman teams
         this.router.navigate(['/home/wwp/teams']);
       }
     });

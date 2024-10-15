@@ -12,26 +12,24 @@ export class TeamDetailsPage implements OnInit {
   team: Team | null = null;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private teamsService: TeamsService
   ) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const gameId = params.get('gameId');
-      const teamName = params.get('teamName');
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state) {
+      const gameId = navigation.extras.state['gameId'];
+      const teamName = navigation.extras.state['teamName'];
       
       if (gameId && teamName) {
         this.game = this.teamsService.getGameData(gameId);
         this.team = this.teamsService.getTeamByGameIdAndName(gameId, teamName);
-        
-        if (!this.game || !this.team) {
-          this.router.navigate(['/home/wwp/teams']);
-        }
       } else {
         this.router.navigate(['/home/wwp/teams']);
       }
-    });
+    } else {
+      this.router.navigate(['/home/wwp/teams']);
+    }
   }
 }

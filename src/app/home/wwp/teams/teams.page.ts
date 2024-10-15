@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { TeamsService, Game, Team } from '../../../teams.service';
 
 @Component({
@@ -8,30 +8,36 @@ import { TeamsService, Game, Team } from '../../../teams.service';
   styleUrls: ['./teams.page.scss'],
 })
 export class TeamsPage implements OnInit {
-  selectedGame: Game | null = null;
+  selectedGame!: Game;
   teams: Team[] = [];
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private teamsService: TeamsService
   ) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const gameId = params.get('id');
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state) {
+      const gameId = navigation.extras.state['gameId'];
       if (gameId) {
-        this.selectedGame = this.teamsService.getGameData(gameId);
-        this.teams = this.teamsService.getTeamsByGameId(gameId);
+        const gameData = this.teamsService.getGameData(gameId);
+        if (gameData) {
+          this.selectedGame = gameData;
+          const teamsData = this.teamsService.getTeamsByGameId(gameId);
+          if (teamsData) {
+            this.teams = teamsData;
+          } else {
+            console.error('array tim kosong');
+          }
+        } else {
+          console.error('array game kosong');
+        }
       }
-    });
+    }
   }
 
   goToTeamDetails(team: Team) {
-    console.log('Team clicked:', team);
-    this.router.navigate(['/home/wwp/teams/team-details', this.selectedGame?.id, team.teamName], {
-      state: { game: this.selectedGame, team: team }
-    });
+    this.router.navigate(['/home/wwp/teams/team-details', this.selectedGame?.id, team.teamName]);
   }
 }
-

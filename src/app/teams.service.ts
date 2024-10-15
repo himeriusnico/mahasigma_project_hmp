@@ -172,6 +172,6 @@ export class TeamsService {
   }
   
   getGames(): Game[] {
-    return this.games; // Mengembalikan array games yang sudah didefinisikan
+    return this.games; 
   }
 }

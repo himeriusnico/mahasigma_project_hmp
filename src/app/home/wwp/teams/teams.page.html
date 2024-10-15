@@ -10,8 +10,8 @@
 <ion-content>
   <div class="image-container">
     <img
-      [src]="selectedGame.image"
-      [alt]="selectedGame.alt"
+      [src]="selectedGame?.image"
+      [alt]="selectedGame?.alt"
       class="center-cropped-image"
     />
   </div>
@@ -36,5 +36,5 @@
 
 <ion-content *ngIf="!selectedGame">
   <ion-spinner></ion-spinner>
-  <p>data tidak ditemukan</p>
+  <p>Loading game data...</p>
 </ion-content>

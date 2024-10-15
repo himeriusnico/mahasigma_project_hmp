@@ -19,6 +19,7 @@ export class WwpPage implements OnInit {
 
   ngOnInit() {
     this.games = this.teamsService.getGames();
+    console.log('Games:', this.games);
   }
 
   goToTeams(game: any) {

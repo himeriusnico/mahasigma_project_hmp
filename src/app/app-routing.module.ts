@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'home/scheduledetail/:index',
     loadChildren: () => import('./home/schedule/scheduledetail/scheduledetail.module').then(m => m.ScheduledetailPageModule)
+  },  {
+    path: 'applyteam',
+    loadChildren: () => import('./applyteam/applyteam.module').then( m => m.ApplyteamPageModule)
   },
+
 ];
 
 @NgModule({

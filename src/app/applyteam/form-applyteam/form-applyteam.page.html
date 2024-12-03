@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Apply Team</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="submitApplication()">
+    <ion-item>
+      <ion-label>Choose Game</ion-label>
+      <ion-select [(ngModel)]="selectedGame" name="game" (ionChange)="onGameChange($event)">
+        <ion-select-option *ngFor="let game of games" [value]="game">{{ game.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Choose Team</ion-label>
+      <ion-select [(ngModel)]="selectedTeam" name="team" [disabled]="!teams.length">
+        <ion-select-option *ngFor="let team of teams" [value]="team">{{ team }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-textarea [(ngModel)]="reason" name="reason" required></ion-textarea>
+    </ion-item>
+
+    <ion-footer>
+      <ion-button expand="block" type="submit" [disabled]="!reason || !selectedGame || !selectedTeam">Submit</ion-button>
+    </ion-footer>
+  </form>
+</ion-content>

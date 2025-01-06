@@ -13,6 +13,20 @@
       <ion-title size="large">Proposal List</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div class="container" *ngFor="let proposal of arrProposal">
+    <ion-item>
+      <div class="kiri" style="text-align: left; width: 65%;">
+        <label>
+          {{proposal.game}}
+        </label>
+      </div>
+      <div class="kanan" style="text-align: right; width: 35%;">
+        <label>
+          {{proposal.status}}
+        </label>
+      </div>
+    </ion-item>
+  </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="primary" (click)="onFabClick()">
       <ion-icon name="add"></ion-icon>

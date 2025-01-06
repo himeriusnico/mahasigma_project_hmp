@@ -26,9 +26,9 @@
     <!-- <ion-list-header>
       <h1 class="ion-label">Teams</h1>
     </ion-list-header> -->
-    <ion-item *ngFor="let team of teams" (click)="goToTeamDetails(team)" button>
+    <ion-item *ngFor="let teams of arrTeam" (click)="goToTeamDetails(teams)" button>
       <ion-label class="clickable-label centered-label">
-        {{ team.teamName }}
+        {{ teams.name }}
       </ion-label>
     </ion-item>
   </ion-list>

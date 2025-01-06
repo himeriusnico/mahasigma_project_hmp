@@ -1,35 +1,35 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home/wwp/teams"></ion-back-button>
+      <ion-back-button defaultHref="/home/wwp/teams/{{gameId}}"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ team?.teamName }}</ion-title>
+    <ion-title>{{ teamName }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="team">
+  <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ team.teamName }}</ion-card-title>
+      <ion-card-title>{{ teamName }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <h3>Players:</h3>
       <ion-list>
-        <ion-item *ngFor="let player of team.teamPlayers">
+        <ion-item *ngFor="let player of teamMembers">
           <ion-avatar slot="start">
-            <img [src]="'https://i.pravatar.cc/150?u=' + player.name" alt="{{ player.name }}" />
+            <img [src]="'https://i.pravatar.cc/150?u=' + player.member_name" alt="{{ player.member_name }}" />
           </ion-avatar>
           <ion-label>
-            <h2>{{ player.name }}</h2>
-            <p>Role: {{ player.role }}</p>
+            <h2>{{ player.member_name }}</h2>
+            <p>Role: {{ player.description }}</p>
           </ion-label>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
 
-  <div *ngIf="!team">
+  <!-- <div *ngIf="!team">
     <ion-spinner></ion-spinner>
     <p>Loading team details...</p>
-  </div>
+  </div> -->
 </ion-content>

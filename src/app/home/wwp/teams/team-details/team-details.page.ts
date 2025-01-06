@@ -29,17 +29,7 @@ export class TeamDetailsPage implements OnInit {
         this.esportService.getteamsmember(this.teamName).subscribe(
           (response: any) => {
             if (response.result === 'success') {
-              this.teamMembers = response.data.filter((team: any) => team.name === this.teamName);
-
-              if (this.teamMembers.length > 0) {
-                this.team = {
-                  teamName: this.teamName,
-                  teamPlayers: this.teamMembers,
-                };
-              } else {
-                alert('Team not found!');
-                this.router.navigate(['/home/wwp/teams']);
-              }
+              this.teamMembers = response.data
             } else {
               alert('Error fetching team members: ' + response.message);
               this.router.navigate(['/home/wwp/teams']);

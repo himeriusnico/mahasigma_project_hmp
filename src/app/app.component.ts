@@ -1,84 +1,30 @@
-import { Component } from '@angular/core';
-
-import { EsportService } from './esport.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service'; // Import the UserService
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
-  username = '';
-  password = '';
-  fullname: string; 
+export class AppComponent implements OnInit {
+  fullname: string | null = null;
 
-  constructor(private esportservice: EsportService) {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    this.username = currentUser[0]?.username || null;
-    this.fullname = currentUser[0]?.fullname || null;
-
-    // if (!localStorage.getItem('users')) {
-    //   localStorage.setItem('users', JSON.stringify([
-    //     { username: 'user1', password: 'pass1' },
-    //     { username: 'user2', password: 'pass2' }
-    //   ]));
-    // }
+  constructor(private userService: UserService, private router: Router) {
+    // Subscribe to the currentUser observable
+    this.userService.currentUser.subscribe((user) => {
+      this.fullname = user ? user.fullname : null; // Update fullname based on user
+    });
   }
 
-  login() {
-    this.esportservice.login(this.username, this.password).subscribe(
-      (response: any) => {
-        if (response.result === 'success') {
-          alert("success")
-          this.fullname = response.fullname
-          const idmember = response.idmember
-          localStorage.setItem('currentUser', JSON.stringify([
-            { username: this.username, fullname: this.fullname, idmember: idmember }
-          ]));
-        }
-        else {
-          alert(response.message)
-        }
-      });
-    // const users = JSON.parse(localStorage.getItem('users') || '[]'); 
-    // const user = users.find(
-    //   (u: any) => u.username === this.username && u.password === this.password
-    // );
-
-    // if (user) {
-    //   localStorage.setItem('currentUser', JSON.stringify(user));
-    //   this.fullname = user.username; 
-    // } else {
-    //   alert('Invalid username or password'); 
-    // }
+  ngOnInit() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '[]');
+    this.fullname = currentUser[0]?.fullname || null; // Initial load from localStorage
   }
 
   logout() {
-    localStorage.removeItem('currentUser'); 
-    this.fullname = ''; 
-    this.username = ''; 
-    this.password = ''; 
+    localStorage.removeItem('currentUser');
+    this.fullname = null; // Clear fullname on logout
+    this.userService.clearUser(); // Clear user in the UserService
   }
-
-  // signup() {
-  //   if (!this.username || !this.password) {
-  //     alert('Please enter a username and password'); 
-  //     return;
-  //   }
-
-  //   const users = JSON.parse(localStorage.getItem('users') || '[]');
-  //   const existingUser = users.find((u: any) => u.username === this.username);
-
-  //   if (existingUser) {
-  //     alert('Username already exists'); 
-  //     return;
-  //   }
-
-  //   const newUser = { username: this.username, password: this.password };
-  //   users.push(newUser);
-  //   localStorage.setItem('users', JSON.stringify(users)); 
-  //   alert('Signup successful! Please log in.'); 
-  //   this.username = ''; 
-  //   this.password = '';
-  // }
 }

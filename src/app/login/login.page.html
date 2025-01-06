@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!fullname" class="ion-padding">
+  <div class="image-container">
+    <img src="../../assets/img/esport logo.png" alt="Your Image" />
+  </div>
+
+  <ion-card>
+    <ion-item>
+      <ion-input
+        [(ngModel)]="username"
+        label="Username"
+        labelPlacement="floating"
+      />
+    </ion-item>
+    <ion-item>
+      <ion-input
+        [(ngModel)]="password"
+        type="password"
+        label="Password"
+        labelPlacement="floating"
+      />
+    </ion-item>
+    <ion-button expand="block" (click)="login()">Login</ion-button>
+
+    <div class="ion-padding">
+      <p>Haven't got an account?</p>
+      <ion-button expand="full" routerLink="/signup">Sign Up</ion-button>
+    </div>
+  </ion-card>
+</ion-content>

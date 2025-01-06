@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'wwp',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -38,9 +38,18 @@ const routes: Routes = [
   {
     path: 'home/scheduledetail/:index',
     loadChildren: () => import('./home/schedule/scheduledetail/scheduledetail.module').then(m => m.ScheduledetailPageModule)
-  },  {
+  },
+  {
     path: 'applyteam',
     loadChildren: () => import('./applyteam/applyteam.module').then( m => m.ApplyteamPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
 
 ];

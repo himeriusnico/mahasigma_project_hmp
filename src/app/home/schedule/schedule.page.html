@@ -13,24 +13,24 @@
 
 <ion-content [fullscreen]="true">
   <ion-list lines="full">
-    <div class="container" *ngFor="let event of arrEvent; let i=index">
-      <ion-item routerLink="/home/scheduledetail/{{i}}">
+    <div class="container" *ngFor="let event of arrEvent">
+      <ion-item routerLink="/home/scheduledetail/{{event.idevent}}">
         <div class="kiri" style="text-align: center; width: 15%;">
           <label style="font-size: 24px;">
-            <b>{{getDatePad(event.tanggalEvent)}}</b>
+            <b>{{getDatePad(event.date)}}</b>
           </label><br>
           <label>
-            {{getStringMonth(event.tanggalEvent)}}
+            {{getStringMonth(event.date)}}
           </label>
         </div>
         <div class="tengah" style="width: 60%;">
           <ion-text>
-            {{event.namaEvent}}
+            {{event.name}}
           </ion-text>
         </div>
         <div class="kanan" style="text-align: center; width: 25%;">
           <ion-text>
-            {{event.namaGame}}-{{event.team}}
+            {{event.game_name}}-{{event.team_name}}
           </ion-text>
         </div>
       </ion-item>

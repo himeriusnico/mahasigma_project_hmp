@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { EventserviceService } from 'src/app/eventservice.service';
+import { EsportService } from 'src/app/esport.service';
 
 @Component({
   selector: 'app-schedule',
@@ -10,19 +10,30 @@ import { EventserviceService } from 'src/app/eventservice.service';
 export class SchedulePage implements OnInit {
   arrEvent: any[] = [];
 
-  constructor(private eventservice: EventserviceService) { }
+  constructor(private esportservice: EsportService) { }
 
   ngOnInit() {
-    this.arrEvent = this.eventservice.arrEvent //Isi array berdasarkan data yang ada di event service
+    this.esportservice.getevent().subscribe(
+      (response) => {
+        if (response.result === 'success') {
+          this.arrEvent = response.data
+        }
+        else {
+          alert(response.message)
+        }
+      }
+    )
   }
 
-  getDatePad(tanggalEvent: Date): String {
-    return tanggalEvent.getDate().toString().padStart(2, '0');
+  getDatePad(eventdate: string): String {
+    const date = new Date(eventdate)
+    return date.getDate().toString().padStart(2, '0');
   }
 
-  getStringMonth(tanggalEvent: Date): String {
+  getStringMonth(eventDate: string): String {
+    const date = new Date(eventDate)
     const month = new Array("JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC");
-    const m = tanggalEvent.getMonth();
-    return month[m];
-  }
+    const m = date.getMonth();
+    return month[m];
+  }
 }

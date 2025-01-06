@@ -31,14 +31,15 @@ export class AppComponent {
         if (response.result === 'success') {
           alert("success")
           this.fullname = response.fullname
+          const idmember = response.idmember
           localStorage.setItem('currentUser', JSON.stringify([
-            { username: this.username, fullname: this.fullname }
+            { username: this.username, fullname: this.fullname, idmember: idmember }
           ]));
         }
         else {
           alert(response.message)
-        }
-      });
+        }
+      });
     // const users = JSON.parse(localStorage.getItem('users') || '[]'); 
     // const user = users.find(
     //   (u: any) => u.username === this.username && u.password === this.password

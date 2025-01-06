@@ -12,8 +12,8 @@
 
   <div class="image-container" *ngIf="selectedGame?.image && !isLoading">
   <img 
-    [src]="selectedGame.name" 
-    [alt]="selectedGame.name" 
+    [src]="'assets/img/' + selectedGame.name + '.jpg'" 
+    [alt]="selectedGame.name"
     class="center-crop-image">
 </div>
 

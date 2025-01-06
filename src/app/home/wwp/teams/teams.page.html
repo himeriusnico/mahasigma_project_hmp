@@ -10,10 +10,9 @@
 <ion-content>
   <div class="image-container">
     <img
-      [src]="selectedGame?.image"
-      [alt]="selectedGame?.alt"
-      class="center-cropped-image"
-    />
+      [src]="'assets/img/' + selectedGame.name + '.jpg'" 
+      [alt]="selectedGame.name"
+      class="center-crop-image">
   </div>
   <!-- <ion-card>
     <ion-card-header>

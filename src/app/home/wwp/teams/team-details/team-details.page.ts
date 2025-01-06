@@ -26,7 +26,7 @@ export class TeamDetailsPage implements OnInit {
 
       if (this.teamName) {
         // Fetch team members based on teamName
-        this.esportService.getteamsmember(this.gameId!).subscribe(
+        this.esportService.getteamsmember(this.teamName).subscribe(
           (response: any) => {
             if (response.result === 'success') {
               this.teamMembers = response.data.filter((team: any) => team.name === this.teamName);

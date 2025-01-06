@@ -62,10 +62,10 @@ export class EsportService {
     return this.http.post(this.link + "get_team.php", urlEncodedData, { headers });
   }
 
-  getteamsmember(idteam: number) {
+  getteamsmember(idteam: string) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const body = new URLSearchParams();
-    body.set('idteam', idteam.toString())
+    body.set('idteam', idteam)
     const urlEncodedData = body.toString();
     return this.http.post(this.link + "get_teammembers.php", urlEncodedData, { headers });
   }

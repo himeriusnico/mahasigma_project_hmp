@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ selectedGame.name }} Achievements</ion-title>
+    <ion-title>{{ selectedGame?.name || 'Achievements' }}</ion-title>
     <ion-buttons slot="start" [routerLink]="['/wwp']">
       <ion-icon name="arrow-back-outline" size="large"></ion-icon>
     </ion-buttons>
@@ -8,37 +8,37 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <div class="image-container">
-      <img 
-      *ngIf="selectedGame.image" 
-      [src]="selectedGame.image" 
-      [alt]="selectedGame.title" 
-      class="center-crop-image">
-    </div>
-    <ion-item>
-      <ion-select [(ngModel)]="selectedYear" (ionChange)="filterAchievements()" label="Year" placeholder="Select Year" labelPlacement="stacked">
-        <ion-select-option [value]="'All'" interface="popover">
-          All
-        </ion-select-option>
-        <ion-select-option *ngFor="let year of availableYears" [value]="year" interface="popover">
-          {{ year }}
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+  <ion-spinner *ngIf="isLoading" style="margin: 20px auto; display: block;"></ion-spinner>
 
+  <div class="image-container" *ngIf="selectedGame?.image && !isLoading">
+  <img 
+    [src]="selectedGame.name" 
+    [alt]="selectedGame.name" 
+    class="center-crop-image">
+</div>
 
+  <ion-item *ngIf="!isLoading">
+    <ion-select [(ngModel)]="selectedYear" (ionChange)="filterAchievements()" placeholder="Select Year">
+      <ion-select-option value="All">All</ion-select-option>
+      <ion-select-option *ngFor="let year of availableYears" [value]="year">
+        {{ year }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  
   <ion-list *ngIf="filteredAchievements.length > 0">
     <ion-card *ngFor="let achievement of filteredAchievements">
       <ion-card-header>
-        <ion-card-title>{{ achievement.title }}</ion-card-title>
+        <ion-card-title>{{ achievement.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>Team: {{ achievement.team }}</p>
-        <p>{{ achievement.description }}</p>
-        <p>Year: {{ achievement.year }}</p>
+        <p>Description: {{ achievement.description }}</p>
+        <p>Date: {{ achievement.date }}</p>
       </ion-card-content>
     </ion-card>
   </ion-list>
+  
+  <ion-item *ngIf="filteredAchievements.length === 0">
+    <p>No achievements found for the selected year.</p>
+  </ion-item>
 </ion-content>

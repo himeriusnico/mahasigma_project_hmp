@@ -11,25 +11,25 @@
   <form (ngSubmit)="submitApplication()">
     <ion-item>
       <ion-label>Choose Game</ion-label>
-      <ion-select [(ngModel)]="selectedGame" name="game" (ionChange)="onGameChange($event)">
-        <ion-select-option *ngFor="let game of games" [value]="game">{{ game.name }}</ion-select-option>
+      <ion-select [(ngModel)]="selectedGame" name="game" (ionChange)="onGameChange()">
+        <ion-select-option *ngFor="let game of arrGame" [value]="game.idgame">{{ game.name }}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label>Choose Team</ion-label>
-      <ion-select [(ngModel)]="selectedTeam" name="team" [disabled]="!teams.length">
-        <ion-select-option *ngFor="let team of teams" [value]="team">{{ team }}</ion-select-option>
+      <ion-select [(ngModel)]="selectedTeam" name="team" [disabled]="!arrTeam.length">
+        <ion-select-option *ngFor="let team of arrTeam" [value]="team.idteam">{{ team.name }}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Description</ion-label>
-      <ion-textarea [(ngModel)]="reason" name="reason" required></ion-textarea>
-    </ion-item>
+      <ion-textarea [(ngModel)]="description" name="description" required></ion-textarea>
+    </ion-item> 
 
     <ion-footer>
-      <ion-button expand="block" type="submit" [disabled]="!reason || !selectedGame || !selectedTeam">Submit</ion-button>
+      <ion-button expand="block" type="submit" [disabled]="!description || !selectedGame || !selectedTeam">Submit</ion-button>
     </ion-footer>
   </form>
 </ion-content>

@@ -22,13 +22,16 @@
         <ion-button
           shape="round"
           fill="outline"
-          (click)="goToAchievement(game)"
+          routerLink="/home/wwp/achievement/{{game.idgame}}"
           >Achievement</ion-button
         >
       </ion-col>
       <ion-col size="auto">
-        <ion-button shape="round" fill="outline" (click)="goToTeams(game)"
-          >teams</ion-button
+        <ion-button 
+        shape="round" 
+        fill="outline" 
+        routerLink="/home/wwp/teams/{{game.idgame}}"
+          >Teams</ion-button
         >
       </ion-col>
     </ion-row>

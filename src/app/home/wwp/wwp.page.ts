@@ -37,7 +37,7 @@ export class WwpPage implements OnInit {
   }
 
   goToTeams(game: any) {
-    this.router.navigate(['/home/wwp/teams', game.id], {
+    this.router.navigate(['/home/wwp/teams', this.esportservice.getgame()], {
       state: { selectedGame: game }
     });
   }

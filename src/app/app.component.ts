@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { EsportService } from './esport.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -8,37 +10,51 @@ import { Component } from '@angular/core';
 export class AppComponent {
   username = '';
   password = '';
-  fullname: string | null = null; 
+  fullname: string; 
 
-  constructor() {
+  constructor(private esportservice: EsportService) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    this.fullname = currentUser?.username || null;
+    this.username = currentUser[0]?.username || null;
+    this.fullname = currentUser[0]?.fullname || null;
 
-    if (!localStorage.getItem('users')) {
-      localStorage.setItem('users', JSON.stringify([
-        { username: 'user1', password: 'pass1' },
-        { username: 'user2', password: 'pass2' }
-      ]));
-    }
+    // if (!localStorage.getItem('users')) {
+    //   localStorage.setItem('users', JSON.stringify([
+    //     { username: 'user1', password: 'pass1' },
+    //     { username: 'user2', password: 'pass2' }
+    //   ]));
+    // }
   }
 
   login() {
-    const users = JSON.parse(localStorage.getItem('users') || '[]'); 
-    const user = users.find(
-      (u: any) => u.username === this.username && u.password === this.password
-    );
+    this.esportservice.login(this.username, this.password).subscribe(
+      (response: any) => {
+        if (response.result === 'success') {
+          alert("success")
+          this.fullname = response.fullname
+          localStorage.setItem('currentUser', JSON.stringify([
+            { username: this.username, fullname: this.fullname }
+          ]));
+        }
+        else {
+          alert(response.message)
+        }
+      });
+    // const users = JSON.parse(localStorage.getItem('users') || '[]'); 
+    // const user = users.find(
+    //   (u: any) => u.username === this.username && u.password === this.password
+    // );
 
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.fullname = user.username; 
-    } else {
-      alert('Invalid username or password'); 
-    }
+    // if (user) {
+    //   localStorage.setItem('currentUser', JSON.stringify(user));
+    //   this.fullname = user.username; 
+    // } else {
+    //   alert('Invalid username or password'); 
+    // }
   }
 
   logout() {
     localStorage.removeItem('currentUser'); 
-    this.fullname = null; 
+    this.fullname = ''; 
     this.username = ''; 
     this.password = ''; 
   }

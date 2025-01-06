@@ -2,7 +2,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { TeamsService } from '../../teams.service'; // Pastikan path ini benar
+import { EsportService } from 'src/app/esport.service';
 
 @Component({
   selector: 'app-wwp',
@@ -14,11 +16,23 @@ export class WwpPage implements OnInit {
 
   constructor(
     private router: Router,
-    private teamsService: TeamsService
+    private teamsService: TeamsService,
+    private esportservice: EsportService
   ) {}
 
   ngOnInit() {
-    this.games = this.teamsService.getGames();
+    // this.games = this.teamsService.getGames();
+    this.esportservice.getgame().subscribe(
+      (response) => {
+        if (response.result === 'success') {
+          this.games = response.data
+        }
+        else {
+          alert(response.message)
+        }
+      }
+    )
+
     console.log('Games:', this.games);
   }
 

@@ -12,7 +12,7 @@
 
 <ion-content>
   <ion-card *ngFor="let game of games">
-    <img [src]="game.image" [alt]="game.alt" />
+    <img [src]="'assets/img/' + game.name + '.jpg'" [alt]="game.name" />
     <ion-card-header>
       <ion-card-title>{{ game.name }}</ion-card-title>
     </ion-card-header>

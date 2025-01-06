@@ -7,11 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: TeamsPage
-  },  {
-    path: 'team-details',
-    loadChildren: () => import('./team-details/team-details.module').then( m => m.TeamDetailsPageModule)
+  },
+  {
+    path: 'team-details/:gameId/:teamName',
+    loadChildren: () =>
+      import('./team-details/team-details.module').then((m) => m.TeamDetailsPageModule),
   }
-
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TeamsService, Game, Team } from '../../../../teams.service';
+import { EsportService } from 'src/app/esport.service';
 
 @Component({
   selector: 'app-team-details',
@@ -8,28 +8,51 @@ import { TeamsService, Game, Team } from '../../../../teams.service';
   styleUrls: ['./team-details.page.scss'],
 })
 export class TeamDetailsPage implements OnInit {
-  game: Game | null = null;
-  team: Team | null = null;
+  gameId: number | null = null;
+  teamName: string | null = null;
+  teamMembers: any[] = [];
+  team: any = null;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private teamsService: TeamsService
+    private esportService: EsportService
   ) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const gameId = params.get('gameId');
-      const teamName = params.get('teamName');
-      
-      if (gameId && teamName) {
-        this.game = this.teamsService.getGameData(gameId);
-        this.team = this.teamsService.getTeamByGameIdAndName(gameId, teamName);
-        
-        if (!this.game || !this.team) {
-          this.router.navigate(['/home/wwp/teams']);
-        }
+    this.route.paramMap.subscribe((params) => {
+      this.gameId = Number(params.get('gameId'));
+      this.teamName = params.get('teamName');
+
+      if (this.teamName) {
+        // Fetch team members based on teamName
+        this.esportService.getteamsmember(this.gameId!).subscribe(
+          (response: any) => {
+            if (response.result === 'success') {
+              this.teamMembers = response.data.filter((team: any) => team.name === this.teamName);
+
+              if (this.teamMembers.length > 0) {
+                this.team = {
+                  teamName: this.teamName,
+                  teamPlayers: this.teamMembers,
+                };
+              } else {
+                alert('Team not found!');
+                this.router.navigate(['/home/wwp/teams']);
+              }
+            } else {
+              alert('Error fetching team members: ' + response.message);
+              this.router.navigate(['/home/wwp/teams']);
+            }
+          },
+          (error) => {
+            console.error('Error fetching team members:', error);
+            alert('Failed to fetch team members');
+            this.router.navigate(['/home/wwp/teams']);
+          }
+        );
       } else {
+        alert('Invalid team or game data');
         this.router.navigate(['/home/wwp/teams']);
       }
     });

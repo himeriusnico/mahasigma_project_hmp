@@ -8,23 +8,16 @@
 </ion-header>
 
 <ion-content>
-  <div class="image-container" *ngIf="game">
-    <img [src]="game.image" [alt]="game.alt" class="center-cropped-image" />
-  </div>
-
-  <ion-card *ngIf="game && team">
+  <ion-card *ngIf="team">
     <ion-card-header>
       <ion-card-title>{{ team.teamName }}</ion-card-title>
-      <!-- <ion-card-subtitle>{{ game.name }}</ion-card-subtitle> -->
     </ion-card-header>
     <ion-card-content>
-      <!-- <h2 class="team-name">Team: {{ team.teamName }}</h2> -->
-      <div class="divider"></div>
       <h3>Players:</h3>
       <ion-list>
         <ion-item *ngFor="let player of team.teamPlayers">
           <ion-avatar slot="start">
-            <img [src]="'https://i.pravatar.cc/150?u=' + player.name" alt="{{player.name}}" />
+            <img [src]="'https://i.pravatar.cc/150?u=' + player.name" alt="{{ player.name }}" />
           </ion-avatar>
           <ion-label>
             <h2>{{ player.name }}</h2>
@@ -34,4 +27,9 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+
+  <div *ngIf="!team">
+    <ion-spinner></ion-spinner>
+    <p>Loading team details...</p>
+  </div>
 </ion-content>

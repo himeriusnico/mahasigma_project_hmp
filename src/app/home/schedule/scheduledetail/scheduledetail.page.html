@@ -13,19 +13,19 @@
 
 <ion-content [fullscreen]="true">
   <div class="container">
-    <ion-card>
-      <ion-img src="{{arrEvent[index].gambarEvent}}"></ion-img>
+    <ion-card *ngFor="let event of arrEvent">
+      <ion-img [src]="'assets/img/' + event.name + '.jpg'" [alt]="event.name"></ion-img>
       <ion-card-header>
-        <ion-card-title>{{arrEvent[index].namaEvent}}</ion-card-title>
+        <ion-card-title>{{event.name}}</ion-card-title>
         <ion-card-subtitle>
-          {{arrEvent[index].lokasiEvent}} ({{getTimePad(arrEvent[index])}})
+          {{event.location}} ({{getTimePad(event.date)}})
         </ion-card-subtitle>
         <ion-card-subtitle>
-          {{arrEvent[index].team}}
+          {{event.team_name}}
         </ion-card-subtitle><br>
       </ion-card-header>
       <ion-card-content>
-        {{arrEvent[index].deskripsiEvent}}
+        {{event.description}}
         <div class="button">
           <ion-button id="btnNotif" shape="round" fill="outline" class="ion-float-right ion-margin-bottom ion-margin-top">
             <ion-icon slot="start" name="notifications-outline"></ion-icon>Notify Me

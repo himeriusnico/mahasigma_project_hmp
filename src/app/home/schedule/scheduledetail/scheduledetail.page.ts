@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SchedulePage } from '../schedule.page';
 import { EventserviceService } from 'src/app/eventservice.service';
+import { EsportService } from 'src/app/esport.service';
 
 interface Schedule {
   tanggalEvent: Date,
@@ -22,25 +23,33 @@ interface Schedule {
 export class ScheduledetailPage implements OnInit {
   arrEvent: any[] = [];
 
-  constructor(private route: ActivatedRoute, private eventservice: EventserviceService) { }
+  constructor(private route: ActivatedRoute, private esportservice: EsportService) { }
 
   index = 0;
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.index = params['index']; // value of 'index' should match the route parameter name
-      // You can use the 'index' parameter for your logic here
+      this.index = params['index'];
     });
 
-    this.arrEvent=this.eventservice.arrEvent //Isi array berdasarkan data yang ada di event service
+    this.esportservice.geteventdetail(this.index).subscribe(
+      (response: any) => {
+        if (response.result === 'success') {
+          this.arrEvent = response.data
+        }
+        else {
+          alert(response.message)
+        }
+      });
   }
 
-  getTimePad(schedule: Schedule): String {
-    var hours = schedule.tanggalEvent.getHours();
-    var minutes = schedule.tanggalEvent.getMinutes();
+  getTimePad(eventdate: string): String {
+    const date = new Date(eventdate)
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
     var period = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12 || 12;
     return hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + " " + period;
   }
 
-  public alertButtons = ['OK'];
+  public alertButtons = ['OK'];
 }

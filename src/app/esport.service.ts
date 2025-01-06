@@ -33,4 +33,66 @@ export class EsportService {
   getgame(): Observable<any> {
     return this.http.get(this.link + "get_game.php")
   }
+
+  getachievements(idgame: number) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idgame', idgame.toString());
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "get_achievements.php", urlEncodedData, { headers });
+  }
+
+  getevent(): Observable<any> {
+    return this.http.get(this.link + "get_events.php")
+  }
+
+  geteventdetail(idevent: number){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idevent', idevent.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "get_eventsdetail.php", urlEncodedData, { headers });
+  }
+
+  getteams(idgame: number) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idgame', idgame.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "get_team.php", urlEncodedData, { headers });
+  }
+
+  getteamsmember(idteam: number) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idteam', idteam.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "get_teammembers.php", urlEncodedData, { headers });
+  }
+
+  getproposal(idmember: number){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idmember', idmember.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "get_proposal.php", urlEncodedData, { headers });
+  }
+
+  getteam(idgame: number){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idgame', idgame.toString())
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "get_team.php", urlEncodedData, { headers });
+  }
+
+  newproposal(idmember: number, idteam: number, description: string){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('idmember', idmember.toString())
+    body.set('idteam', idteam.toString())
+    body.set('description', description)
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + "new_proposal.php", urlEncodedData, { headers });
+  }
 }

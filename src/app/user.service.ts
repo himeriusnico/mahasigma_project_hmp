@@ -5,16 +5,16 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',  
 })  
 export class UserService {  
-  private userSource = new BehaviorSubject<any>(null); // Initial value is null  
-  currentUser = this.userSource.asObservable(); // Observable to subscribe to  
+  private userSource = new BehaviorSubject<any>(null); 
+  currentUser = this.userSource.asObservable();   
 
   constructor() {}  
 
   setUser(user: any) {  
-    this.userSource.next(user); // Emit the new user value  
+    this.userSource.next(user);
   }  
 
   clearUser() {  
-    this.userSource.next(null); // Emit null when logging out  
+    this.userSource.next(null); 
   }  
 }  

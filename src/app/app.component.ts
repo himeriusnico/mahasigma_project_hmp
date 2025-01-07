@@ -11,20 +11,20 @@ export class AppComponent implements OnInit {
   fullname: string | null = null;
 
   constructor(private userService: UserService, private router: Router) {
-    // Subscribe to the currentUser observable
+    
     this.userService.currentUser.subscribe((user) => {
-      this.fullname = user ? user.fullname : null; // Update fullname based on user
+      this.fullname = user ? user.fullname : null; 
     });
   }
 
   ngOnInit() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '[]');
-    this.fullname = currentUser[0]?.fullname || null; // Initial load from localStorage
+    this.fullname = currentUser[0]?.fullname || null; 
   }
 
   logout() {
     localStorage.removeItem('currentUser');
-    this.fullname = null; // Clear fullname on logout
-    this.userService.clearUser(); // Clear user in the UserService
+    this.fullname = null; 
+    this.userService.clearUser();
   }
 }

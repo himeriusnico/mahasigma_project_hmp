@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EsportService } from '../esport.service';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service'; // Import the UserService
+import { UserService } from '../user.service'; 
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
   constructor(
     private esportservice: EsportService,
     private router: Router,
-    private userService: UserService // Inject the UserService
+    private userService: UserService 
   ) {}
 
   ngOnInit() {}
@@ -36,10 +36,10 @@ export class LoginPage implements OnInit {
           };
           localStorage.setItem('currentUser', JSON.stringify([user]));
 
-          // Set the user in the UserService
+         
           this.userService.setUser(user);
 
-          this.router.navigate(['/wwp']); // Navigate to the home page
+          this.router.navigate(['/wwp']);
         } else {
           alert(response.message);
         }

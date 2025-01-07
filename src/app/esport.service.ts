@@ -20,14 +20,19 @@ export class EsportService {
     return this.http.post(this.link + "login.php", urlEncodedData, { headers });
   }
 
-  signup(username: string, password: string, fullname: string) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+  signup(username: string, password: string, name: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
     const body = new URLSearchParams();
-    body.set('username', username)
-    body.set('password', password)
-    body.set('fullname', fullname)
+    body.set('username', username);
+    body.set('password', password);
+    body.set('name', name);
     const urlEncodedData = body.toString();
-    return this.http.post(this.link + "signup.php", urlEncodedData, { headers });
+    console.log('Sending data:', urlEncodedData);
+    return this.http.post(this.link + 'signup1.php', urlEncodedData, {
+      headers,
+    });
   }
 
   getgame(): Observable<any> {
